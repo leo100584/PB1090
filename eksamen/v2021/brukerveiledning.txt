@@ -1,0 +1,2 @@
+# Brukerveiledning for løsningsforslag
+Flere av oppgaven bruker samme klasse. For å unngå at klassen blir overskrevet, burde man gå inn I oppgave-katalogen for å kompilere (javac) og kjøre koden (java).
