@@ -15,13 +15,12 @@ class Oppgave2 {
         //Test at unntak blir kastet når beholding er tom:
         butikk.legg_inn_bestilling("6", "1", 1);
     }
-
 }
 
 class Kunde {
-    private  String kunde_nr;
-    private  String adresse;
-    private  String telefon_nr;
+    private String kunde_nr;
+    private String adresse;
+    private String telefon_nr;
 
     Kunde(String kunde_nr, String adresse, String telefon_nr) {
         this.kunde_nr = kunde_nr;
@@ -36,13 +35,11 @@ class Kunde {
     public String getKunde_nr() {
         return kunde_nr;
     }
-
 }
 
 class privatKunde extends Kunde {
-    private final String navn;
-    private final String fodselsdato;
-
+    private String navn;
+    private String fodselsdato;
 
     privatKunde(String kunde_nr, String adresse, String telefon_nr, String navn, String fodselsdato) {
         super(kunde_nr, adresse, telefon_nr);
@@ -53,14 +50,12 @@ class privatKunde extends Kunde {
     public String toString() {
         return super.toString() + " | navn: " + this.navn + " | bursdag: " + this.fodselsdato;
     }
-
 }
 
 class Butikk {
-
-    private final String navn;
-    private final Kunde[] kundeliste;
-    private final Vare[] varelager = new Vare[5];
+    private String navn;
+    private Kunde[] kundeliste;
+    private Vare[] varelager = new Vare[5];
     private int antallKunder = 0;
     private int antallVarer = 0;
 
@@ -115,9 +110,9 @@ class Butikk {
 }
 
 class Vare {
-    private  String id;
-    private  String navn;
-    private  String pris;
+    private String id;
+    private String navn;
+    private String pris;
     private int beholdning;
 
     public Vare(String id, String navn, String pris, int beholdning) {
@@ -145,7 +140,6 @@ class Vare {
             beholdning += modifikator;
             System.out.println("Oppdaterer beholding til: " + beholdning);
         }
-
     }
 
     public String getId() {

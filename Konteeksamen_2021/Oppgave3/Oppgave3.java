@@ -13,7 +13,6 @@ class Oppgave3 implements Runnable {
     int femSekunderTilMS = 5000;
 
     public static void main(String[] args) throws Exception {
-
         kunder = new PrivatKunde[2];
 
         Butikk butikk = new Butikk("Telebitikken AS" , kunder);
@@ -48,7 +47,6 @@ class Oppgave3 implements Runnable {
                 //Her kan eksekveringsTid brukes, men når vi tester brukes bare 5ms (5000s)
                 long totalTid = femSekunderTilMS;
                 Thread.sleep(totalTid);
-
             }
         } catch (InterruptedException ie) {
             System.out.println("SkriveTråd ble ikke ferdig, eller ble avsluttet");
@@ -56,7 +54,6 @@ class Oppgave3 implements Runnable {
     }
 
     void skrivTilFil(PrivatKunde[] kunder) {
-
         System.out.println("skriver til fil dersom kunde har bursdag...");
 
         File file = new File("kundefil.txt");
@@ -70,25 +67,22 @@ class Oppgave3 implements Runnable {
                 }
             }
             skriv.close();
-
         } catch (Exception ex) {
             System.out.println("kan ikke skrive bursdag til fil...");
             System.out.println(ex);
         }
-
     }
 
     //Legger inn 131021 fra Oppgave3 for å teste mot en kunde:
     public String get_date() {
         return "131021";
     }
-
 }
 
 //Koden under er fra tidligere oppgave, dette er for å få programmet til kjører
 class PrivatKunde extends Kunde {
-    private  String navn;
-    private  String fodselsdato;
+    private String navn;
+    private String fodselsdato;
 
     PrivatKunde(String kunde_nr, String adresse, String telefon_nr, String navn, String fodselsdato) {
         super(kunde_nr, adresse, telefon_nr);
@@ -110,9 +104,9 @@ class PrivatKunde extends Kunde {
 }
 
 class Kunde {
-    String kunde_nr;
-    String adresse;
-    String telefon_nr;
+    private String kunde_nr;
+    private String adresse;
+    private String telefon_nr;
 
     Kunde(String kunde_nr, String adresse, String telefon_nr) {
         this.kunde_nr = kunde_nr;
@@ -126,7 +120,6 @@ class Kunde {
 }
 
 class Butikk {
-
     private String navn;
     private PrivatKunde[] kundeliste;
     private int antallKunder = 0;
@@ -141,5 +134,4 @@ class Butikk {
         kundeliste[antallKunder] = k;
         antallKunder++;
     }
-
 }

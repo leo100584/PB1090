@@ -22,21 +22,19 @@ class Oppgave1 {
         //Skriv ut kunder på nytt etter sletting:
         System.out.println();
         b.printKunder();
-
     }
 }
 
 class Kunde {
-    private final String kunde_nr;
-    private final String adresse;
-    private final String telefon_nr;
+    private String kunde_nr;
+    private String adresse;
+    private String telefon_nr;
 
     Kunde(String kunde_nr, String adresse, String telefon_nr) {
         this.kunde_nr = kunde_nr;
         this.adresse = adresse;
         this.telefon_nr = telefon_nr;
     }
-
 
     public String toString() {
         return "kundeNr: " + this.kunde_nr + " | adresse: " + this.adresse + " | tlf: " + this.telefon_nr;
@@ -45,13 +43,11 @@ class Kunde {
     public String getKunde_nr() {
         return kunde_nr;
     }
-
 }
 
 class privatKunde extends Kunde {
-    private final String navn;
-    private final String fodselsdato;
-
+    private String navn;
+    private String fodselsdato;
 
     privatKunde(String kunde_nr, String adresse, String telefon_nr, String navn, String fodselsdato) {
         super(kunde_nr, adresse, telefon_nr);
@@ -62,12 +58,11 @@ class privatKunde extends Kunde {
     public String toString() {
         return super.toString() + " | navn: " + this.navn + " | bursdag: " + this.fodselsdato;
     }
-
 }
 
 class bedriftsKunde extends Kunde {
-    private final int organisasjons_nr;
-    private final String kontakt_person;
+    private int organisasjons_nr;
+    private String kontakt_person;
 
     bedriftsKunde(String kunde_nr, String adresse, String telefon_nr, int organisasjons_nr, String kontakt_person) {
         super(kunde_nr, adresse, telefon_nr);
@@ -78,13 +73,11 @@ class bedriftsKunde extends Kunde {
     public String toString() {
         return super.toString() + " | organisasjonsNr: " + this.organisasjons_nr + " | kontaktperson: " + this.kontakt_person;
     }
-
 }
 
 class Butikk {
-
-    private final String navn;
-    private final Kunde[] kundeliste;
+    private String navn;
+    private Kunde[] kundeliste;
     private int antallKunder = 0;
 
     Butikk(String navn, Kunde[] kundeliste) {
@@ -116,7 +109,4 @@ class Butikk {
             }
         }
     }
-
 }
-
-    
