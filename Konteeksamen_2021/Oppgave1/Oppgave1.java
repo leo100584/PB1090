@@ -87,7 +87,7 @@ class Butikk {
 
     public void leggTilKunde(Kunde k) {
         kundeliste[antallKunder] = k;
-        antallKunder++;
+        antallKunder +=1;
     }
 
     public void slettKunde(String kunde_nr) {

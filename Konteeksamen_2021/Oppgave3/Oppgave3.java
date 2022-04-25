@@ -61,7 +61,6 @@ class Oppgave3 implements Runnable {
             PrintWriter skriv = new PrintWriter(file);
             for (int i = 0; i < kunder.length; i++) {
                 if( kunder[i].getFodselsdato().equals(get_date()) ){
-
                     skriv.write("Navn: " + ( kunder[i]).getNavn() + "; Bursdag: " +  kunder[i].getFodselsdato() + "\n");
                     System.out.println( kunder[i].getNavn() + " har Bursdag i dag");
                 }
@@ -132,6 +131,6 @@ class Butikk {
 
     public void leggTilKunde(PrivatKunde k) {
         kundeliste[antallKunder] = k;
-        antallKunder++;
+        antallKunder +=1;
     }
 }

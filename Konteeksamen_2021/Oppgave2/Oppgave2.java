@@ -66,12 +66,12 @@ class Butikk {
 
     public void leggTilKunde(Kunde k) {
         kundeliste[antallKunder] = k;
-        antallKunder++;
+        antallKunder +=1;
     }
 
     public void leggTilVare(Vare v) {
         varelager[antallVarer] = v;
-        antallVarer++;
+        antallVarer +=1;
     }
 
     public Kunde hentKunde(String k_id) {
