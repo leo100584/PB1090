@@ -1,5 +1,6 @@
 class Oppgave2 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
+        //Denne main-metoden er ikke en del av løsningsforslaget!
         int antallTestKunder = 3;
 
         Kunde[] kunder = new Kunde[antallTestKunder];
@@ -11,9 +12,11 @@ class Oppgave2 {
         Vare vare1 = new Vare("1", "banan", "6", 5);
         butikk.leggTilVare(vare1);
         butikk.legg_inn_bestilling("6", "1", 4);
-
-        //Test at unntak blir kastet når beholding er tom:
         butikk.legg_inn_bestilling("6", "1", 1);
+
+        //Test at unntak blir kastet når beholding er mindre enn 0:
+        butikk.legg_inn_bestilling("6", "1", 1);
+
     }
 }
 
@@ -94,7 +97,7 @@ class Butikk {
         return null;
     }
 
-    public void legg_inn_bestilling(String k_id, String v_id, int antall) {
+    public void legg_inn_bestilling(String k_id, String v_id, int antall)  {
         System.out.println("Starter med legg_inn_bestilling...");
         Kunde kunde = hentKunde(k_id);
         Vare vare = hentVare(v_id);
@@ -104,7 +107,13 @@ class Butikk {
         if (antall < 0) {
             System.out.println("Antall er negativ");
         } else {
-            vare.oppdaterBeholdning(-antall);
+            //setter antall til negativ tall (litt som å gjøre * -1 for å få et negativt tall når vi regner matte
+            try{
+                vare.oppdaterBeholdning(-antall);
+            }
+            catch( Exception exception){
+                System.out.print(exception.getMessage());
+            }
         }
     }
 }
@@ -122,20 +131,17 @@ class Vare {
         this.beholdning = beholdning;
     }
 
-    public void oppdaterBeholdning(int modifikator) {
+    public void oppdaterBeholdning(int modifikator) throws Exception {
         System.out.println("Beholdning er: " + beholdning);
-        if (beholdning + modifikator == 0) {
+        System.out.println("Bestilling er:" + -1*modifikator);
+        
+        //Dersom beholding blir mindre enn 0
+        if (beholdning + modifikator < 0) {
             System.out.println("Kaster et unntak her:");
 
-            try {
-                // ink. throws Exception i metode-signatur.
-                throw new Exception("Beholdning er tom");
-            } catch (Exception exception) {
-                //Programmet kan kjøre videre etter et unntak er fanget:
-                System.out.println(exception.getMessage());
-                // Eller vi kan avslutte med return:
-                //return;
-            }
+            //Kaster et unntak:
+            throw new Exception("Beholdning er tom");
+            
         } else {
             beholdning += modifikator;
             System.out.println("Oppdaterer beholding til: " + beholdning);
