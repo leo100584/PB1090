@@ -1,11 +1,10 @@
-
 class Oppgave3 {
     //Main-metoden er ikke den del av løsningsforslaget:
     public static void main(String[] args) {
         System.out.println("Oppgave3 start");
 
-        MedlemArray personArray = hentTestData();
-        Medlem[] medlemsNummer = sortereMedlemer(personArray.medlemer);
+        Idrettslag medlemArray = hentTestData();
+        Medlem[] medlemsNummer = sortereMedlemer(medlemArray.medlemer);
 
         for (Medlem medlem : medlemsNummer) {
             System.out.println(medlem.hentMedlesnummer());
@@ -18,9 +17,9 @@ class Oppgave3 {
     }
 
     //Denne metoden er ikke den del av løsningsforslaget:
-    public static MedlemArray hentTestData() {
+    public static Idrettslag hentTestData() {
         int startNummer = 1000;
-        MedlemArray temp = new MedlemArray(2000);
+        Idrettslag temp = new Idrettslag(2000);
 
         for (int index = 0; index < temp.medlemer.length; index++) {
             //Legger til medlems nr. på hver 7.person:
@@ -31,14 +30,14 @@ class Oppgave3 {
         return temp;
     }
 
-    public static Medlem[] sortereMedlemer(Medlem[] personer) {
+    public static Medlem[] sortereMedlemer(Medlem[] medlemArray) {
         Medlem[] temp = new Medlem[2000];
         int antall = 0;
 
-        for (Medlem person : personer) {
-            if (person != null) {
-                if (person.harMedlemsNr()) {
-                    temp[antall] = person;
+        for (Medlem medlem : medlemArray) {
+            if (medlem != null) {
+                if (medlem.harMedlemsNr()) {
+                    temp[antall] = medlem;
                     antall += 1;
                 }
             }
@@ -55,11 +54,10 @@ class Oppgave3 {
 
         return personerMedMedlemsNr;
     }
-
 }
 
 class Medlem {
-    private final String navn;
+    private String navn;
     private int medlemsNr;
 
     Medlem(String navn, int medlemsNr) {
@@ -74,16 +72,15 @@ class Medlem {
     public int hentMedlesnummer() {
         return medlemsNr;
     }
-
 }
 
 //Denne klassen trenger ikke være med i løsningen, men den blir bruk i dette løsningsforslaget for å teste Medlems-metodene.
-class MedlemArray {
-    private final int lengde;
+class Idrettslag {
+    private int lengde;
     private int antall;
     Medlem[] medlemer;
 
-    MedlemArray(int lengde) {
+    Idrettslag(int lengde) {
         this.medlemer = new Medlem[lengde];
         this.lengde = lengde;
         this.antall = 0;
