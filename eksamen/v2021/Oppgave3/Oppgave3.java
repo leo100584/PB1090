@@ -1,3 +1,4 @@
+import java.util.Scanner;
 class Oppgave3 {
     //Main-metoden er ikke den del av løsningsforslaget:
     public static void main(String[] args) {
@@ -42,16 +43,32 @@ class Oppgave3 {
                 }
             }
         }
+        return kopierTilNyttArray(temp, antall);
+    }
 
+    //Egen metode som kopierer temp data til nytt array, og lar brukeren velge mellom
+    //aa bruke hjemmelaget arraycopy eller aa bruke System.arraycopy
+    public static Medlem[] kopierTilNyttArray(Medlem[] temp, int antall){
+        Scanner input = new Scanner(System.in);
         Medlem[] personerMedMedlemsNr = new Medlem[antall];
 
-        for (int index = 0; index < antall; index++) {
-            personerMedMedlemsNr[index] = temp[index];
+        System.out.println("tast 0 for hjemmelaget arraycopy eller 1 for System.arraycopy");
+        int svar = input.nextInt();
+
+        switch(svar){
+            case 0:
+                for (int index = 0; index < antall; index++) {
+                    personerMedMedlemsNr[index] = temp[index];
+                }
+                break;
+            case 1:
+                //evt. bruk metode fra System-klassen for å kopiere temp-array til personerMedMedlemsNr-array:
+                System.arraycopy(temp,0,personerMedMedlemsNr,0,antall);
+                break;
+            default:
+                System.out.println("Skriv 0 eller 1");
         }
-
-        //evt. bruk metode fra System-klassen for å kopiere temp-array til personerMedMedlemsNr-array:
-        //System.arraycopy(temp,0,personerMedMedlemsNr,0,antall);
-
+        input.close();
         return personerMedMedlemsNr;
     }
 }
