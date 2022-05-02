@@ -43,32 +43,21 @@ class Oppgave3 {
                 }
             }
         }
-        return kopierTilNyttArray(temp, antall);
+
+        Medlem[] medlemerMednr = new Medlem[antall];
+        medlemerMednr = kopierTilNyttArray(temp, antall);
+        //Alternativ losing kommentert ut under
+        //System.arraycopy(temp,0,medlemerMednr,0,antall);
+        return medlemerMednr;
     }
 
-    //Egen metode som kopierer temp data til nytt array, og lar brukeren velge mellom
-    //aa bruke hjemmelaget arraycopy eller aa bruke System.arraycopy
     public static Medlem[] kopierTilNyttArray(Medlem[] temp, int antall){
-        Scanner input = new Scanner(System.in);
         Medlem[] personerMedMedlemsNr = new Medlem[antall];
 
-        System.out.println("tast 0 for hjemmelaget arraycopy eller 1 for System.arraycopy");
-        int svar = input.nextInt();
-
-        switch(svar){
-            case 0:
-                for (int index = 0; index < antall; index++) {
-                    personerMedMedlemsNr[index] = temp[index];
-                }
-                break;
-            case 1:
-                //evt. bruk metode fra System-klassen for å kopiere temp-array til personerMedMedlemsNr-array:
-                System.arraycopy(temp,0,personerMedMedlemsNr,0,antall);
-                break;
-            default:
-                System.out.println("Skriv 0 eller 1");
+        for (int index = 0; index < antall; index++) {
+            personerMedMedlemsNr[index] = temp[index];
         }
-        input.close();
+        
         return personerMedMedlemsNr;
     }
 }
